@@ -22,11 +22,11 @@
     "svelte-script-context": {
         "prefix": "s-script-context",
         "body": [
-            "<script context=\"module\">",
+            "<script module>",
             "\t${1:// your script goes here}",
             "</script>"
         ],
-        "description": "add a script with context=\"module\" to your svelte file"
+        "description": "add a module script to your svelte file"
     },
     "svelte-style-tag": {
         "prefix": "s-style",
@@ -186,12 +186,12 @@
     },
     "svelte-on-event": {
         "prefix": "s-on-event",
-        "body": ["on:${1:eventname}={${2:handler}}"],
+        "body": ["on${1:eventname}={${2:handler}}"],
         "description": "on event"
     },
     "svelte-on-event-forward": {
         "prefix": "s-on-event-foward",
-        "body": ["on:${1:eventname}"],
+        "body": ["on${1:eventname}"],
         "description": "on event foward"
     },
     "svelte-on-event-modifiers": {
@@ -622,5 +622,81 @@
             "const ${1:App} = require('${2:./App.svelte}').default;"
         ],
         "description": "svelte register"
+    },
+    "svelte-rune-state": {
+        "prefix": "s-rune-state",
+        "body": ["let ${1:name} = $state(${2:initialValue});$0"],
+        "description": "svelte state rune"
+    },
+    "svelte-rune-props": {
+        "prefix": "s-rune-props",
+        "body": ["let ${1:name} = \\$props();$0"],
+        "description": "svelte props rune"
+    },
+    "svelte-rune-derived": {
+        "prefix": "s-rune-derived",
+        "body": ["let ${1:name} = \\$derived(${2:expression});$0"],
+        "description": "svelte derived rune"
+    },
+    "svelte-rune-derived-by": {
+        "prefix": "s-rune-derived-by",
+        "body": [
+            "let ${1:name} = \\$derived.by((${2:args}) => {",
+            "\t${3:expression}",
+            "});$0"
+        ],
+        "description": "svelte derived.by rune"
+    },
+    "svelte-rune-effect": {
+        "prefix": "s-rune-effect",
+        "body": [
+            "\\$effect(() => {",
+            "\t${0:expression}",
+            "});"
+        ],
+        "description": "svelte effect rune"
+    },
+    "svelte-rune-effect-pre": {
+        "prefix": "s-rune-effect-pre",
+        "body": [
+            "\\$effect.pre(() => {",
+            "\t${0:expression}",
+            "});"
+        ],
+        "description": "svelte effect.pre rune"
+    },
+    "svelte-rune-bindable": {
+        "prefix": "s-rune-bindable",
+        "body": ["${1:value} = \\$bindable()$0"],
+        "description": "svelte bindable rune"
+    },
+    "svelte-rune-inspect": {
+        "prefix": "s-rune-inspect",
+        "body": ["\\$inspect(${1:value});$0"],
+        "description": "svelte inspect rune"
+    },
+    "svelte-snippet": {
+        "prefix": "s-snippet",
+        "body": [
+            "{#snippet ${1:name}(${2:param)}}",
+            "\t${3: <!-- content here -->}",
+            "{/snippet}"
+        ],
+        "description": "svelte snippet"
+    },
+    "svelte-snippet-render": {
+        "prefix": "s-snippet-render",
+        "body": ["{@render ${1:name}(${2:args})}$0"],
+        "description": "svelte render snippet"
+    },
+    "svelte-attachment": {
+        "prefix": "s-attachment",
+        "body": ["{@attach ${1:name}(${2:args})}$0"],
+        "description": "svelte attachment"
+    },
+    "svelte-const-tag": {
+        "prefix": "s-const-tag",
+        "body": ["{@const ${1:name} = ${2:value}}$0"],
+        "description": "svelte const tag"
     }
 }
